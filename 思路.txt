@@ -1,0 +1,20 @@
+每个节点程序：
+
+数据非阻塞收发
+prepared=1
+发送"prepared"
+while 没生成完区块
+if find: 发送区块str 
+if 收到str：结束mining线程 校验 通过后 done=1 发送"verified"
+if 收到"verified" done=1
+   收到 "prepared" & prepared (代表都准备好了） 创建新的mining线程
+if done: 打印区块信息，存储，prepared=1, 发送"prepared"
+
+mining线程中
+block_init
+开始挖矿
+  挖到find=1 return
+
+
+发送端 指定发送到的ip 不需bind
+接收端 地址 INADDR_ANY 需要bind
